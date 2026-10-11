@@ -54,23 +54,15 @@ cropguard-research-website/
 
 ---
 
-## 3. How to Preview & Run Locally
+## 3. Preview Locally
 
-### Option A: Direct Browser Preview
-Double-click `index.html` to open directly in any modern browser (Chrome, Edge, Firefox, Safari).
+Start the local web server from the repository root, one level above the `Website` folder:
 
-### Option B: Local Web Server (Recommended)
-Using Python:
 ```powershell
-# In the project directory:
-python -m http.server 8000
+python -m http.server 3000
 ```
-Then visit `http://localhost:8000` in your web browser.
 
-Using Node.js:
-```powershell
-npx serve .
-```
+Once the server is running, [open the CropGuard website](http://localhost:3000). It will open the site from `/Website/` automatically.
 
 ---
 
