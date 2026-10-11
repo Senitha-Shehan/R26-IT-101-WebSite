@@ -69,6 +69,7 @@ Once the server is running, [open the CropGuard website](http://localhost:3000).
 ## 4. Academic Research Team
 
 - **Supervisor:** Dr. Sanvitha Kasthuriarachchi
+- **Co-Supervisor:** Ms. Aruni Premarathne
 - **Group Members:**
   - Munasinghe M A M C (IT221130716) — *TinyML Edge Optimization*
   - Shehan H B S (IT22065094) — *Disease Detection & Active Learning*
