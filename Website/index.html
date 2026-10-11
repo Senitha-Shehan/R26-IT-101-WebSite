@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CropGuard — Offline-First Edge AI Paddy Disease Detection & Advisory</title>
+
+  <!-- SEO & Academic Metadata -->
+  <meta name="description"
+    content="CropGuard: An Offline-First Active Learning Framework for Region-Adaptive Paddy Disease Detection and Localized Advisory. Project R26-IT-101, SLIIT Faculty of Computing.">
+  <meta name="keywords"
+    content="CropGuard, Paddy Disease Detection, TinyML, MobileNetV2, Active Learning, Edge AI, Agriculture Sri Lanka, RAG, SLIIT, Precision Agriculture">
+  <meta name="author" content="Faculty of Computing, Sri Lanka Institute of Information Technology (SLIIT)">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CropGuard — Offline-First Edge AI Paddy Disease Detection">
+  <meta property="og:description"
+    content="TinyML on-device inference, human-in-the-loop active learning, and multilingual RAG advisory for Sri Lankan rice farming.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/hero-paddy.jpg">
+  <link rel="icon" type="image/png" href="assets/images/cropguard-logo.png">
+
+  <!-- Typography: Google Fonts Outfit & Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main research content</a>
+
+  <!-- ========================================================================
+       Sticky Navigation Bar (Inspired by LexiScan)
+       ======================================================================== -->
+  <header class="site-header" role="banner">
+    <div class="container nav-container">
+      <div class="brand-group">
+        <a href="#home" class="brand-link" aria-label="CropGuard Research Portal Home">
+          <div class="brand-icon" aria-hidden="true">
+            <img src="assets/images/cropguard-logo.png" alt="">
+          </div>
+          <span class="brand-title">Crop<span class="accent">Guard</span></span>
+        </a>
+        <span class="brand-tag">R26-IT-101</span>
+      </div>
+
+      <!-- Desktop Nav Menu with active indicator dot -->
+      <nav id="site-nav" role="navigation" aria-label="Main Navigation">
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#domain" class="nav-link">Domain</a></li>
+          <li><a href="#documents" class="nav-link">Documents</a></li>
+          <li><a href="#presentations" class="nav-link">Presentations</a></li>
+          <li><a href="#about" class="nav-link">About Us</a></li>
+          <li><a href="#contact" class="nav-link">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="#domain" class="btn btn-primary btn-sm btn-arrow header-cta-btn">
+          Explore Research
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M7 7h10v10" />
+            <path d="M7 17 17 7" />
+          </svg>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="nav-toggle" aria-controls="mobile-drawer" aria-expanded="false"
+          aria-label="Toggle navigation drawer">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop -->
+  <div class="mobile-drawer-backdrop" aria-hidden="true"></div>
+
+  <!-- Mobile Drawer -->
+  <aside id="mobile-drawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+      <span class="brand-title">Crop<span class="accent">Guard</span></span>
+      <span class="eyebrow-pill">R26-IT-101</span>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="#home" class="mobile-nav-link active">Home</a></li>
+      <li><a href="#domain" class="mobile-nav-link">Domain</a></li>
+      <li><a href="#documents" class="mobile-nav-link">Documents</a></li>
+      <li><a href="#presentations" class="mobile-nav-link">Presentations</a></li>
+      <li><a href="#about" class="mobile-nav-link">About Us</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact Us</a></li>
+    </ul>
+    <div style="margin-top: auto;">
+      <a href="#domain" class="btn btn-primary" style="width: 100%;">Explore Research</a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+
+    <!-- ======================================================================
+         1. Hero Section (#home)
+         ====================================================================== -->
+    <section id="home" class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-layout">
+
+          <div class="hero-content">
+            <div class="eyebrow">
+              <span class="eyebrow-pill">RESEARCH PROJECT</span>
+              <span class="divider"></span>
+              <span>R26-IT-101 · SLIIT FACULTY OF COMPUTING</span>
+            </div>
+
+            <h1 id="hero-title" class="display-title">
+              Smarter crop care.<br>
+              <em>Even offline.</em>
+            </h1>
+
+            <p class="hero-lead">
+              An Edge AI and active learning framework for paddy disease detection and region-aware agricultural
+              advisory, designed for the real-world conditions of Sri Lankan farming.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#domain" class="btn btn-primary btn-arrow">
+                Explore the Research
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <path d="M7 7h10v10" />
+                  <path d="M7 17 17 7" />
+                </svg>
+              </a>
+              <a href="#architecture" class="btn btn-secondary">
+                View Architecture
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Visual Frame with Badges -->
+          <div class="hero-visual-col">
+            <div class="hero-photo-wrapper">
+              <img src="assets/images/hero-paddy.jpg"
+                alt="Healthy green paddy field in Sri Lanka during agricultural research inspection"
+                class="hero-main-img" width="680" height="480">
+
+              <!-- Floating AI Central Badge -->
+              <div class="hero-ai-badge">
+                <div class="hero-ai-badge-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                </div>
+                <div class="hero-ai-badge-text">
+                  <span class="title">CROPGUARD AI</span>
+                  <span class="sub">TinyML Edge Engine</span>
+                </div>
+              </div>
+
+              <!-- Floating Bottom Metrics -->
+              <div class="hero-floating-summary">
+                <div class="hero-stats-row">
+                  <div>
+                    <div class="hero-stat-val">80%</div>
+                    <div class="hero-stat-lbl">Size Reduction</div>
+                  </div>
+                  <div>
+                    <div class="hero-stat-val">~3.0s</div>
+                    <div class="hero-stat-lbl">Edge Latency</div>
+                  </div>
+                  <div>
+                    <div class="hero-stat-val">97.45%</div>
+                    <div class="hero-stat-lbl">Baseline Acc.</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         Hero Metadata Strip (Institutional Details)
+         ====================================================================== -->
+    <div class="meta-strip" role="region" aria-label="Project Information">
+      <div class="container">
+        <div class="meta-strip-items">
+          <div class="meta-strip-item">
+            <div class="meta-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10 12h4" />
+                <path d="M10 8h4" />
+                <path d="M14 21v-3a2 2 0 0 0-4 0v3" />
+                <path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
+                <path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16" />
+              </svg>
+            </div>
+            <div>
+              <div class="meta-text-title">SLIIT</div>
+              <div class="meta-text-sub">Faculty of Computing</div>
+            </div>
+          </div>
+
+          <div class="meta-strip-item">
+            <div class="meta-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+              </svg>
+            </div>
+            <div>
+              <div class="meta-text-title">R26-IT-101</div>
+              <div class="meta-text-sub">Research Identifier</div>
+            </div>
+          </div>
+
+          <div class="meta-strip-item">
+            <div class="meta-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+            </div>
+            <div>
+              <div class="meta-text-title">AIMS Cluster</div>
+              <div class="meta-text-sub">Intelligent Systems</div>
+            </div>
+          </div>
+
+          <div class="meta-strip-item">
+            <div class="meta-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <div>
+              <div class="meta-text-title">Edge AI &amp; TinyML</div>
+              <div class="meta-text-sub">Smart Agriculture</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         2. Domain Section (SIMPLIFIED per user directive) (#domain)
+         ====================================================================== -->
+    <section id="domain" class="section section-white" aria-labelledby="domain-heading">
+      <div class="container">
+
+        <!-- 2.1 The Problem -->
+        <div class="problem-grid">
+          <div class="problem-text-col reveal">
+            <div class="eyebrow">
+              <span class="num">01</span>
+              <span class="divider"></span>
+              <span>The Problem</span>
+            </div>
+            <h2 id="domain-heading" class="display-title">
+              Diseases take <br>
+              <em>10% of yields.</em><br>
+              Connectivity is absent.
+            </h2>
+            <p>
+              In Sri Lanka, paddy diseases like bacterial leaf blight and brown spot inflict catastrophic damage,
+              costing approximately 10% of the Maha season harvest. Rural smallholder farmers lack immediate access to
+              plant pathologists, while cloud-dependent AI tools fail completely without reliable internet coverage.
+            </p>
+
+            <div class="problem-card-points">
+              <div class="point-card reveal delay-1">
+                <div class="point-num">01 / DIAGNOSIS</div>
+                <div class="point-title">Delayed Identification</div>
+                <div class="point-desc">Visual inspection and delayed extension consultations allow early infections to
+                  spread across fields unchecked.</div>
+              </div>
+              <div class="point-card reveal delay-2">
+                <div class="point-num">02 / CONNECTIVITY</div>
+                <div class="point-title">Rural Network Deficit</div>
+                <div class="point-desc">Cloud-based mobile tools fail in remote paddy acreage with poor or nonexistent
+                  cellular coverage.</div>
+              </div>
+              <div class="point-card reveal delay-3">
+                <div class="point-num">03 / DOMAIN SHIFT</div>
+                <div class="point-title">Lab vs. Field Gap</div>
+                <div class="point-desc">Models trained on pristine laboratory datasets degrade sharply when tested on
+                  varied field lighting and angles.</div>
+              </div>
+              <div class="point-card reveal delay-4">
+                <div class="point-num">04 / ADVISORY</div>
+                <div class="point-title">Generic English Advice</div>
+                <div class="point-desc">Standard AI chatbots output generic guidance disconnected from approved Sri
+                  Lankan agrochemical treatments.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Problem Photo with Tag -->
+          <div class="problem-img-wrapper reveal delay-2">
+            <img src="assets/images/field-research.jpg"
+              alt="Agronomy researcher examining diseased paddy leaf in Sri Lankan rice field" class="problem-field-img"
+              width="600" height="420" loading="lazy">
+            <div class="problem-tag-pill">
+              Field Diagnostics &amp; Unconstrained Photography
+            </div>
+          </div>
+        </div>
+
+        <div class="domain-evidence-grid">
+          <article class="domain-evidence-card reveal">
+            <span class="domain-evidence-label">04 / LITERATURE SURVEY</span>
+            <h3>Evidence-led crop intelligence</h3>
+            <p>
+              CropGuard builds on research in mobile plant-disease classification, active learning, transfer learning,
+              model quantization, retrieval-augmented generation, and offline-first field applications.
+            </p>
+          </article>
+          <article class="domain-evidence-card reveal delay-1">
+            <span class="domain-evidence-label">05 / RESEARCH GAP</span>
+            <h3>From laboratory accuracy to field readiness</h3>
+            <p>
+              Existing solutions often depend on connectivity or laboratory imagery. This project addresses the gap
+              through regional adaptation, uncertainty review, edge optimization, and grounded local advice.
+            </p>
+          </article>
+          <article class="domain-evidence-card reveal delay-2">
+            <span class="domain-evidence-label">06 / TECHNOLOGIES USED</span>
+            <h3>Designed for practical deployment</h3>
+            <p>
+              The framework combines MobileNetV2, TensorFlow Lite Float16 quantization, TinyML edge inference,
+              transfer learning, active learning, vector retrieval, and Gemini API multilingual synthesis.
+            </p>
+          </article>
+        </div>
+
+        <!-- 2.2 The Research Concept & Objectives Banner -->
+        <div class="research-concept-banner reveal" id="idea">
+          <div class="concept-banner-header">
+            <div class="eyebrow" style="margin-bottom: 0.5rem;">
+              <span class="num">02</span>
+              <span class="divider"></span>
+              <span>Research Objectives</span>
+            </div>
+            <h3>Main Objective: Fully Offline Edge Inference</h3>
+            <p style="font-size: 1.05rem; color: var(--color-forest); line-height: 1.6;">
+              “To create a TinyML-optimized crop disease detection model that can perform accurate real-time inference
+              directly on low-end smartphones without internet access.”
+            </p>
+          </div>
+
+          <div class="objectives-compact-grid">
+            <div class="obj-item-card reveal delay-1">
+              <span class="obj-item-code">IT22065094</span>
+              <h4>Active Learning Pipeline</h4>
+              <p>Train baseline MobileNetV2 on 8 paddy classes; establish 80% confidence threshold gating and two-role
+                expert validation.</p>
+            </div>
+            <div class="obj-item-card reveal delay-2">
+              <span class="obj-item-code">IT22100320</span>
+              <h4>Region-Adaptive AutoML</h4>
+              <p>Apply transfer learning with hard-example mining and class weighting to adapt models to Jaffna and
+                Galle regional variations.</p>
+            </div>
+            <div class="obj-item-card reveal delay-3">
+              <span class="obj-item-code">IT221130716</span>
+              <h4>TinyML Optimization</h4>
+              <p>Quantize models via Float16 TFLite to achieve &lt;50MB footprint and &lt;3s latency on
+                resource-constrained smartphones.</p>
+            </div>
+            <div class="obj-item-card reveal delay-4">
+              <span class="obj-item-code">IT22059840</span>
+              <h4>Localized RAG Advisory</h4>
+              <p>Retrieve verified Dept. of Agriculture Sri Lanka guidance and synthesize safe trilingual advice
+                (Sinhala, Tamil, English) via Gemini API.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2.3 The Four Main Components (LexiScan Module Style) -->
+        <div class="section-header reveal" style="margin-top: 5rem;">
+          <div class="eyebrow">
+            <span class="num">03</span>
+            <span class="divider"></span>
+            <span>Research Modules</span>
+          </div>
+          <h2 class="section-title">The Four Core Components</h2>
+          <p class="section-subtitle">
+            CropGuard combines four interdependent modules into an end-to-end framework built specifically for Sri
+            Lankan rice cultivation.
+          </p>
+        </div>
+
+        <div class="modules-grid">
+          <!-- Module 01 -->
+          <div class="module-card reveal delay-1">
+            <div class="module-top">
+              <span class="module-index">01</span>
+              <span class="module-badge">ACTIVE LEARNING</span>
+            </div>
+            <h3>Disease Detection &amp; Active Learning</h3>
+            <p>
+              MobileNetV2 classifier trained on 8 paddy classes with an 80% confidence uncertainty check. Low-confidence
+              cases are cached locally and synchronized for expert agricultural officer annotation.
+            </p>
+            <div class="module-meta-tag">
+              Lead: Shehan H B S (IT22065094)
+            </div>
+          </div>
+
+          <!-- Module 02 -->
+          <div class="module-card reveal delay-2">
+            <div class="module-top">
+              <span class="module-index">02</span>
+              <span class="module-badge">TRANSFER LEARNING</span>
+            </div>
+            <h3>Region-Adaptive AutoML Framework</h3>
+            <p>
+              Solves the lab-to-field domain shift using hard-example mining and class weighting. Fine-tunes base models
+              for agro-climatic zones like Jaffna and Galle, drastically reducing false-healthy predictions from 95 to
+              4.
+            </p>
+            <div class="module-meta-tag">
+              Lead: Somasundara M M (IT22100320)
+            </div>
+          </div>
+
+          <!-- Module 03 -->
+          <div class="module-card reveal delay-3">
+            <div class="module-top">
+              <span class="module-index">03</span>
+              <span class="module-badge">TINYML EDGE</span>
+            </div>
+            <h3>TinyML Model Compression</h3>
+            <p>
+              Compresses full-precision models down to Float16 TensorFlow Lite format. Achieves an 80% size reduction
+              (21.53 MB to 4.6 MB) with 97.18%–97.40% accuracy and ~3s inference on low-memory edge devices.
+            </p>
+            <div class="module-meta-tag">
+              Lead: Munasinghe M A M C (IT221130716)
+            </div>
+          </div>
+
+          <!-- Module 04 -->
+          <div class="module-card reveal delay-4">
+            <div class="module-top">
+              <span class="module-index">04</span>
+              <span class="module-badge">RAG ADVISORY</span>
+            </div>
+            <h3>RAG Grounded Localized Advisory</h3>
+            <p>
+              Vector retrieval anchored in verified Department of Agriculture Sri Lanka treatment manuals. Utilizes
+              Gemini API for safe structuring and trilingual delivery in Sinhala, Tamil, and English with safe fallback.
+            </p>
+            <div class="module-meta-tag">
+              Lead: Jayasinghe H P S G (IT22059840)
+            </div>
+          </div>
+        </div>
+
+        <!-- 2.4 Simple System Architecture Diagram -->
+        <div id="architecture" class="architecture-clean-box">
+          <div class="section-header" style="margin-bottom: 2rem;">
+            <div class="eyebrow">
+              <span class="num">04</span>
+              <span class="divider"></span>
+              <span>System Architecture</span>
+            </div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Offline-First Operational Pipeline</h3>
+            <p class="section-subtitle">
+              Clear separation between on-device real-time inference, opportunistic data synchronization, and grounded
+              expert supervision.
+            </p>
+          </div>
+
+          <div class="arch-stages-grid">
+            <!-- Stage 1 -->
+            <div class="arch-stage-card">
+              <span class="arch-stage-badge">Stage 01 · 100% Offline Edge</span>
+              <h4>On-Device Smartphone Inference</h4>
+              <p>Farmer captures field leaf photo. Image is preprocessed and passed to the 4.6 MB Float16 MobileNetV2
+                model directly on the phone.</p>
+              <ul class="arch-step-list">
+                <li>Capture leaf photograph</li>
+                <li>Tensor normalization</li>
+                <li>TFLite inference in ~3 seconds</li>
+                <li>Confidence score evaluated</li>
+              </ul>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="arch-stage-card">
+              <span class="arch-stage-badge">Stage 02 · Confidence Gating</span>
+              <h4>Path A (Confident) vs Path B (Uncertain)</h4>
+              <p>Predictions ≥80% show immediate disease results. Cases &lt;80% are flagged as uncertain and stored in
+                local SQLite cache.</p>
+              <ul class="arch-step-list">
+                <li>≥80%: Instant disease diagnosis</li>
+                <li>&lt;80%: Local SQLite uncertain queue</li>
+                <li>Opportunistic sync when online</li>
+                <li>Batch data upload saves farmer quota</li>
+              </ul>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="arch-stage-card">
+              <span class="arch-stage-badge">Stage 03 · Expert Loop &amp; Advisory</span>
+              <h4>Active Retraining &amp; RAG Advisory</h4>
+              <p>Agricultural officers assign labels, administrators verify for retraining. Advisory queries verified
+                Dept of Agriculture manuals in 3 languages.</p>
+              <ul class="arch-step-list">
+                <li>Two-role expert review &amp; approval</li>
+                <li>Region-adaptive retraining (V4.1)</li>
+                <li>RAG retrieval + Gemini structuring</li>
+                <li>Sinhala, Tamil, &amp; English output</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2.5 Short Methodology Overview -->
+        <div class="section-header" style="margin-top: 5rem; margin-bottom: 1.5rem;">
+          <div class="eyebrow">
+            <span class="num">05</span>
+            <span class="divider"></span>
+            <span>Scientific Protocol</span>
+          </div>
+          <h2 class="section-title">Methodology Overview</h2>
+          <p class="section-subtitle">
+            Five systematic engineering steps governing dataset acquisition, edge quantization, active learning, and
+            multilingual advisory.
+          </p>
+        </div>
+
+        <div class="methodology-clean-steps">
+          <div class="method-clean-step">
+            <div class="method-step-num">01</div>
+            <h4>Dataset &amp; Preprocessing</h4>
+            <p>8-class paddy disease dataset (70% train, 15% val, 15% test). Standardized image tensor scaling.</p>
+          </div>
+          <div class="method-clean-step">
+            <div class="method-step-num">02</div>
+            <h4>Baseline Training</h4>
+            <p>Trained MobileNetV2 baseline achieving 97.45% accuracy on curated test set after pipeline calibration.
+            </p>
+          </div>
+          <div class="method-clean-step">
+            <div class="method-step-num">03</div>
+            <h4>TinyML Quantization</h4>
+            <p>Float16 post-training quantization reducing footprint by 80% (21.53 MB to 4.6 MB) with 97.18% accuracy.
+            </p>
+          </div>
+          <div class="method-clean-step">
+            <div class="method-step-num">04</div>
+            <h4>Active Learning &amp; Tuning</h4>
+            <p>80% uncertainty gating, two-role expert labeling, and hard-example mining boosting field accuracy to
+              53.50%.</p>
+          </div>
+          <div class="method-clean-step">
+            <div class="method-step-num">05</div>
+            <h4>Grounded Advisory</h4>
+            <p>Dept of Agriculture vector index + Gemini API structuring trilingual recommendations with safe fallback.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         3. Results & Evaluation Section (#results)
+         ====================================================================== -->
+    <section id="results" class="section section-cream" aria-labelledby="results-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-pill">EMPIRICAL EVALUATION</span>
+            <span class="divider"></span>
+            <span>REPORTED METRICS</span>
+          </div>
+          <h2 id="results-title" class="section-title">Experimental Benchmarks</h2>
+          <p class="section-subtitle">
+            Authentic performance numbers reported in the CropGuard research paper across model compression, unseen
+            field generalization, and trilingual coverage.
+          </p>
+        </div>
+
+        <!-- 4 Stat Highlight Cards -->
+        <div class="results-hero-grid">
+          <div class="result-card-huge">
+            <div class="result-val">80%</div>
+            <div class="result-title">Storage Reduction</div>
+            <div class="result-desc">Model compressed from 21.53 MB down to 4.6 MB via Float16 TFLite quantization.
+            </div>
+          </div>
+          <div class="result-card-huge">
+            <div class="result-val">97.18%</div>
+            <div class="result-title">Compressed Accuracy</div>
+            <div class="result-desc">Minimal accuracy change compared to the 97.45% baseline on the 8-class test split.
+            </div>
+          </div>
+          <div class="result-card-huge">
+            <div class="result-val">~3.0s</div>
+            <div class="result-title">On-Device Latency</div>
+            <div class="result-desc">Fast edge execution on low-memory smartphones (&lt;2GB RAM) without cloud reliance.
+            </div>
+          </div>
+          <div class="result-card-huge">
+            <div class="result-val">95 → 4</div>
+            <div class="result-title">False-Healthy Errors</div>
+            <div class="result-desc">Critical safety milestone: dramatic drop in unflagged diseased cases in fine-tuned
+              V4.1.</div>
+          </div>
+        </div>
+
+        <!-- Clean Comparison Tables -->
+        <div class="tables-clean-grid">
+          <div class="table-box">
+            <h4>Table III: Model Compression &amp; Edge Trade-offs</h4>
+            <div class="sub">Baseline Keras model vs. Deployed Float16 TensorFlow Lite model</div>
+            <table class="clean-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Before Compression</th>
+                  <th>After Compression</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Model Size</strong></td>
+                  <td class="mono">21.53 MB</td>
+                  <td class="mono highlight">4.6 MB (-80%)</td>
+                </tr>
+                <tr>
+                  <td><strong>Format</strong></td>
+                  <td class="mono">Keras (.keras)</td>
+                  <td class="mono">Float16 TFLite</td>
+                </tr>
+                <tr>
+                  <td><strong>Accuracy</strong></td>
+                  <td class="mono">97.45%</td>
+                  <td class="mono">97.18% – 97.40%</td>
+                </tr>
+                <tr>
+                  <td><strong>Inference Time</strong></td>
+                  <td class="mono">3 s</td>
+                  <td class="mono">3 s</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="table-box">
+            <h4>Table IV: Generalization to Unseen Field Images</h4>
+            <div class="sub">Model V4 baseline vs. Model V4.1 with hard-example mining &amp; class weighting</div>
+            <table class="clean-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Model V4</th>
+                  <th>Model V4.1 (Deployed)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Accuracy (Seen Test Set)</strong></td>
+                  <td class="mono">82.86%</td>
+                  <td class="mono">—</td>
+                </tr>
+                <tr>
+                  <td><strong>Accuracy (Unseen Field Images)</strong></td>
+                  <td class="mono">37.24%</td>
+                  <td class="mono highlight">53.50% (+16.26%)</td>
+                </tr>
+                <tr>
+                  <td><strong>False-Healthy Predictions</strong></td>
+                  <td class="mono" style="color: #DC2626;">95 cases</td>
+                  <td class="mono highlight" style="color: #246B42;">4 cases (-95.8%)</td>
+                </tr>
+                <tr>
+                  <td><strong>Deployment Decision</strong></td>
+                  <td>Rejected</td>
+                  <td class="highlight">Selected Deployed Model</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         4. Milestones Section (#milestones)
+         ====================================================================== -->
+    <section id="milestones" class="section section-white" aria-labelledby="milestones-title" hidden>
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-pill">CURRICULUM TIMELINE</span>
+            <span class="divider"></span>
+            <span>ACADEMIC EVALUATION</span>
+          </div>
+          <h2 id="milestones-title" class="section-title">Milestones &amp; Assessments</h2>
+          <p class="section-subtitle">
+            Progress milestones governing the academic evaluation cycle at SLIIT Faculty of Computing. Select an
+            assessment to inspect requirements and status.
+          </p>
+        </div>
+
+        <div class="milestones-wrapper">
+          <div class="milestones-select-bar">
+            <div class="select-title-group">
+              <h3>Academic Assessment Review</h3>
+              <p>Track deliverables, marking status, and submission requirements.</p>
+            </div>
+            <div>
+              <label for="milestone-select" class="sr-only"
+                style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">Select
+                Assessment</label>
+              <select id="milestone-select" class="custom-select" aria-controls="ms-card-content">
+                <option value="proposal">Project Proposal</option>
+                <option value="progress1">Progress Presentation 1</option>
+                <option value="progress2">Progress Presentation 2</option>
+                <option value="final">Final Assessment</option>
+                <option value="viva">Viva Voce (Oral Defense)</option>
+                <option value="other">Other Assessments</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="milestone-content-layout" id="ms-card-content" role="region" aria-live="polite">
+            <div>
+              <span class="ms-status-badge completed" id="ms-status-pill">Completed</span>
+              <h3 class="ms-title" id="ms-title">Project Proposal Defense</h3>
+              <p class="ms-desc" id="ms-desc">
+                Formal academic defense of the CropGuard research framework. Outlines rural smallholder challenges in
+                Sri Lanka, the offline-first TinyML thesis, member sub-objectives, and baseline feasibility.
+              </p>
+              <h5 style="font-size: 0.95rem; margin-bottom: 0.6rem; color: var(--color-forest);">Key Deliverables:</h5>
+              <ul class="ms-checklist" id="ms-checklist">
+                <li>Approved Topic Assessment Form (TAF-R26-IT-101)</li>
+                <li>Detailed Research Problem Definition &amp; Scope</li>
+                <li>Proposal Presentation Slide Deck</li>
+                <li>Literature Survey &amp; Architecture Specification</li>
+              </ul>
+            </div>
+
+            <div class="ms-side-box">
+              <div class="ms-side-stat">
+                <span class="lbl">Assessment Date</span>
+                <span class="val" id="ms-date-val">To be confirmed</span>
+              </div>
+              <div class="ms-side-stat">
+                <span class="lbl">Marks Allocation</span>
+                <span class="val" id="ms-marks-val">To be confirmed</span>
+              </div>
+              <a href="#documents" class="btn btn-secondary btn-sm" style="align-self: flex-start; margin-top: 0.5rem;">
+                View Related Documents
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         5. Documents Archive (#documents)
+         ====================================================================== -->
+    <section id="documents" class="section section-cream" aria-labelledby="documents-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-pill">PROJECT ARCHIVE</span>
+            <span class="divider"></span>
+            <span>PUBLICATIONS &amp; REPORTS</span>
+          </div>
+          <h2 id="documents-title" class="section-title">Documents Archive</h2>
+          <p class="section-subtitle">
+            Browse the project charter, research proposal, progress presentations, updated progress work, and final
+            thesis.
+          </p>
+        </div>
+
+        <div class="document-list" id="docs-list">
+
+          <article class="document-row">
+            <span class="document-number">01</span>
+            <div class="document-details"><h3>Project Charter</h3><p>Initial project documentation</p></div>
+            <span class="document-format">DOC · PDF</span>
+            <a class="document-pending" href="assets/documents/CropGuard-Charter.pdf" target="_blank" rel="noopener">View <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="document-row">
+            <span class="document-number">02</span>
+            <div class="document-details"><h3>Research Proposal</h3><p>Proposal report and presentation</p></div>
+            <span class="document-format">PPT · PDF</span>
+            <a class="document-pending" href="https://docs.google.com/presentation/d/1djzcIvhPECtR1jLePgnrOVLA1BBT4BL0/edit?usp=drive_link&amp;ouid=111576925628243231378&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">View <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="document-row">
+            <span class="document-number">03</span>
+            <div class="document-details"><h3>Progress Presentation I</h3><p>Progress review and initial findings</p></div>
+            <span class="document-format">PPT</span>
+            <a class="document-pending" href="https://docs.google.com/presentation/d/1djzcIvhPECtR1jLePgnrOVLA1BBT4BL0/edit?usp=drive_link&amp;ouid=111576925628243231378&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">View <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="document-row">
+            <span class="document-number">04</span>
+            <div class="document-details"><h3>Progress Presentation II</h3><p>Progress review and initial findings</p></div>
+            <span class="document-format">PPT</span>
+            <a class="document-pending" href="https://docs.google.com/presentation/d/1g_AjHfxfcruak9OhunqtfgMwfCGNyM8W/edit?usp=drive_link&amp;ouid=111576925628243231378&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener">View <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="document-row">
+            <span class="document-number">05</span>
+            <div class="document-details"><h3>Updated Progress</h3><p>Updated paper and methodology</p></div>
+            <span class="document-format">PPT</span>
+            <a class="document-pending" href="https://drive.google.com/drive/folders/1a2jL0pgvp6hBB4UEqDQ1yDNwt_mgo2DN?usp=drive_link" target="_blank" rel="noopener">View <span aria-hidden="true">↗</span></a>
+          </article>
+          <article class="document-row">
+            <span class="document-number">06</span>
+            <div class="document-details"><h3>Final Thesis</h3><p>Complete thesis document</p></div>
+            <span class="document-format">PDF</span>
+            <a class="document-pending" href="https://drive.google.com/drive/folders/1a2jL0pgvp6hBB4UEqDQ1yDNwt_mgo2DN?usp=drive_link" target="_blank" rel="noopener">View <span aria-hidden="true">↗</span></a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         6. Presentations Section (#presentations)
+         ====================================================================== -->
+    <section id="presentations" class="section section-white" aria-labelledby="presentations-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-pill">SLIDE DECKS</span>
+            <span class="divider"></span>
+            <span>EXAMINATION DEFENSE</span>
+          </div>
+          <h2 id="presentations-title" class="section-title">Presentations</h2>
+          <p class="section-subtitle">
+            Defense presentation slide decks delivered to the examination panel at SLIIT Faculty of Computing.
+          </p>
+        </div>
+
+        <div class="presentations-grid-clean">
+          <div class="pres-clean-card">
+            <div class="pres-icon-box" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+            </div>
+            <h3>Proposal Presentation</h3>
+            <p>Introduction to the offline-first paddy disease problem, literature review, proposed TinyML architecture,
+              and individual work distributions.</p>
+            <div class="pres-bottom-row">
+              <a href="https://docs.google.com/presentation/d/1djzcIvhPECtR1jLePgnrOVLA1BBT4BL0/edit?usp=drive_link&amp;ouid=111576925628243231378&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"
+                class="btn btn-secondary btn-sm">View Presentation</a>
+            </div>
+          </div>
+
+          <div class="pres-clean-card">
+            <div class="pres-icon-box" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+                <line x1="8" y1="21" x2="16" y2="21" />
+                <line x1="12" y1="17" x2="12" y2="21" />
+              </svg>
+            </div>
+            <h3>Progress Presentation 1</h3>
+            <p>Interim defense showcasing baseline MobileNetV2 training, initial Float16 quantization findings (4.6 MB),
+              and local sample caching protocols.</p>
+            <div class="pres-bottom-row">
+              <a href="https://docs.google.com/presentation/d/1djzcIvhPECtR1jLePgnrOVLA1BBT4BL0/edit?usp=drive_link&amp;ouid=111576925628243231378&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"
+                class="btn btn-secondary btn-sm">View Presentation</a>
+            </div>
+          </div>
+
+          <div class="pres-clean-card">
+            <div class="pres-icon-box" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+            </div>
+            <h3>Progress Presentation 2</h3>
+            <p>Demonstration of regional model adaptation (V4.1), two-role expert portal approval, and preliminary RAG
+              multilingual generation in Sinhala and Tamil.</p>
+            <div class="pres-bottom-row">
+              <a href="https://docs.google.com/presentation/d/1g_AjHfxfcruak9OhunqtfgMwfCGNyM8W/edit?usp=drive_link&amp;ouid=111576925628243231378&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"
+                class="btn btn-secondary btn-sm">View Presentation</a>
+            </div>
+          </div>
+
+          <div class="pres-clean-card">
+            <div class="pres-icon-box" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <h3>Final Presentation &amp; Viva</h3>
+            <p>Comprehensive final research defense across all four components, complete system demonstration,
+              limitations analysis, and examination committee Q&amp;A.</p>
+            <div class="pres-bottom-row">
+              <span class="btn btn-secondary btn-sm" style="opacity: 0.6; cursor: not-allowed;">Pending</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         7. About Us — Research Team (#about)
+         ====================================================================== -->
+    <section id="about" class="section section-cream" aria-labelledby="about-title">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow">
+            <span class="eyebrow-pill">RESEARCH CONTRIBUTORS</span>
+            <span class="divider"></span>
+            <span>AIMS GROUP</span>
+          </div>
+          <h2 id="about-title" class="section-title">About the Research Team</h2>
+          <p class="section-subtitle">
+            Undergraduate researchers from the Faculty of Computing, Sri Lanka Institute of Information Technology
+            (SLIIT).
+          </p>
+        </div>
+
+        <div class="team-grid-clean">
+          <!-- Member 1 -->
+          <div class="team-member-clean-card">
+            <div class="member-photo-frame">
+              <img src="assets/images/team/IT221130716.png" alt="Munasinghe M A M C">
+              <span class="member-photo-overlay-tag">Profile Photo</span>
+            </div>
+            <div class="member-info-body">
+              <h3>Munasinghe M A M C</h3>
+              <div class="member-reg-id">IT221130716</div>
+              <span class="member-role-tag">TinyML Edge Optimization</span>
+              <p class="member-bio">
+                Lead researcher for on-device TinyML compression. Investigated post-training Float16 quantization,
+                pruning, and low-latency inference on low-memory Android devices.
+              </p>
+              <a href="mailto:it221130716@my.sliit.lk" class="member-email-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                it221130716@my.sliit.lk
+              </a>
+            </div>
+          </div>
+
+          <!-- Member 2 -->
+          <div class="team-member-clean-card">
+            <div class="member-photo-frame">
+              <img src="assets/images/team/IT22065094.jpg" alt="Shehan H B S">
+              <span class="member-photo-overlay-tag">Profile Photo</span>
+            </div>
+            <div class="member-info-body">
+              <h3>Shehan H B S</h3>
+              <div class="member-reg-id">IT22065094</div>
+              <span class="member-role-tag">Disease Detection &amp; Active Learning</span>
+              <p class="member-bio">
+                Lead researcher for baseline MobileNetV2 classification and active learning. Engineered the 80%
+                confidence threshold gating and two-role expert validation workflows.
+              </p>
+              <a href="mailto:it22065094@my.sliit.lk" class="member-email-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                it22065094@my.sliit.lk
+              </a>
+            </div>
+          </div>
+
+          <!-- Member 3 -->
+          <div class="team-member-clean-card">
+            <div class="member-photo-frame">
+              <img src="assets/images/team/IT22100320.png" alt="Somasundara M M">
+              <span class="member-photo-overlay-tag">Profile Photo</span>
+            </div>
+            <div class="member-info-body">
+              <h3>Somasundara M M</h3>
+              <div class="member-reg-id">IT22100320</div>
+              <span class="member-role-tag">Region-Adaptive AutoML</span>
+              <p class="member-bio">
+                Lead researcher for regional transfer learning. Applied hard-example mining and class weighting to
+                bridge domain shift on field imagery from Jaffna and Galle regions.
+              </p>
+              <a href="mailto:it22100320@my.sliit.lk" class="member-email-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                it22100320@my.sliit.lk
+              </a>
+            </div>
+          </div>
+
+          <!-- Member 4 -->
+          <div class="team-member-clean-card">
+            <div class="member-photo-frame">
+              <img src="assets/images/team/IT22059848.png" alt="Jayasinghe H P S G">
+              <span class="member-photo-overlay-tag">Profile Photo</span>
+            </div>
+            <div class="member-info-body">
+              <h3>Jayasinghe H P S G</h3>
+              <div class="member-reg-id">IT22059840</div>
+              <span class="member-role-tag">RAG Advisory &amp; Localization</span>
+              <p class="member-bio">
+                Lead researcher for localized agronomic advisory. Built the retrieval index grounded in Department of
+                Agriculture manuals and Gemini API multilingual structuring.
+              </p>
+              <a href="mailto:it22059840@my.sliit.lk" class="member-email-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+                it22059840@my.sliit.lk
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic Leadership Subsection -->
+        <div class="supervisors-clean-box">
+          <div class="eyebrow" style="margin-bottom: 0.5rem;">
+            <span class="num">08</span>
+            <span class="divider"></span>
+            <span>Supervision</span>
+          </div>
+          <h3 style="font-size: 1.5rem; color: var(--color-forest); margin-bottom: 0.5rem;">Academic Project Leadership
+          </h3>
+          <p style="font-size: 0.92rem; color: var(--color-text-body);">Guiding research methodology, edge architecture
+            rigor, and assessment compliance.</p>
+
+          <div class="supervisors-clean-grid">
+            <div class="supervisor-item-card">
+              <div class="supervisor-icon-circle supervisor-photo">
+                <img src="assets/images/team/sanvitha-kasthuriarachchi.jpg" alt="Dr. Sanvitha Kasthuriarachchi">
+              </div>
+              <div>
+                <h4>Dr. Sanvitha Kasthuriarachchi</h4>
+                <div class="supervisor-desig">Project Supervisor</div>
+                <div class="supervisor-dept">Faculty of Computing, Sri Lanka Institute of Information Technology (SLIIT)
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         8. Contact Us Section (#contact)
+         ====================================================================== -->
+    <section id="contact" class="section section-white" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="contact-layout-clean">
+
+          <div class="contact-details-col">
+            <div class="eyebrow">
+              <span class="eyebrow-pill">GET IN TOUCH</span>
+              <span class="divider"></span>
+              <span>COMMUNICATION</span>
+            </div>
+            <h2 id="contact-title" class="section-title">Research Enquiries &amp; Collaboration</h2>
+            <p class="lead">
+              Have questions regarding our TinyML edge architecture, replication benchmarks, or potential agronomic
+              field trials in Sri Lanka? Reach out to the team.
+            </p>
+
+            <div class="contact-channels">
+              <div class="channel-card">
+                <div class="channel-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="channel-title">Institution</div>
+                  <div class="channel-val">Faculty of Computing, Sri Lanka Institute of Information Technology (SLIIT),
+                    Malabe, Sri Lanka.</div>
+                </div>
+              </div>
+
+              <div class="channel-card">
+                <div class="channel-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="channel-title">Official Academic Contact</div>
+                  <div class="channel-val">
+                    <a href="mailto:it22065094@my.sliit.lk"
+                      style="color: var(--color-green-primary); text-decoration: underline;">
+                      it22065094@my.sliit.lk
+                    </a>
+                    <div class="channel-note">General project correspondence and collaboration enquiries.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="channel-card">
+                <div class="channel-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="2" y1="12" x2="22" y2="12" />
+                    <path
+                      d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="channel-title">Academic Portal</div>
+                  <div class="channel-val">cdap.sliit.lk / www.sliit.lk</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="contact-research-card" aria-label="Research collaboration information">
+            <div class="contact-card-kicker">CROPGUARD · R26-IT-101</div>
+            <h3>Connect with the research team</h3>
+            <p>
+              Explore the project archive, review our research outputs, or contact the team through the official
+              academic channel for collaboration and replication enquiries.
+            </p>
+
+            <div class="contact-card-metrics">
+              <div>
+                <strong>04</strong>
+                <span>Research modules</span>
+              </div>
+              <div>
+                <strong>01</strong>
+                <span>Project supervisor</span>
+              </div>
+              <div>
+                <strong>24/7</strong>
+                <span>Offline-first vision</span>
+              </div>
+            </div>
+
+            <div class="contact-card-footer">
+              <span>Academic correspondence</span>
+              <a href="mailto:it22065094@my.sliit.lk" class="btn btn-primary btn-sm">
+                Email the team
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================================
+       Footer (4 Columns, LexiScan Minimalist Layout)
+       ======================================================================== -->
+  <footer class="site-footer-clean" role="contentinfo">
+    <div class="container">
+      <div class="footer-columns-grid">
+
+        <div class="footer-brand-col">
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+            <div class="brand-icon"
+              style="width: 32px; height: 32px; background: transparent; border-color: rgba(255,255,255,0.2); color: #fff;"
+              aria-hidden="true">
+              <img src="assets/images/cropguard-logo.png" alt="">
+            </div>
+            <span class="brand-title" style="color: #fff;">Crop<span class="accent"
+                style="color: var(--color-leaf);">Guard</span></span>
+          </div>
+          <p>
+            An Offline-First Active Learning Framework for Region-Adaptive Paddy Disease Detection and Localized
+            Advisory. Developed at SLIIT Faculty of Computing.
+          </p>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <span class="eyebrow-pill"
+              style="background: rgba(255,255,255,0.08); color: var(--color-leaf); border-color: rgba(255,255,255,0.12);">R26-IT-101</span>
+            <span class="eyebrow-pill"
+              style="background: rgba(255,255,255,0.08); color: var(--color-leaf); border-color: rgba(255,255,255,0.12);">AIMS
+              Cluster</span>
+          </div>
+        </div>
+
+        <div class="footer-link-col">
+          <h4>Navigation</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#domain">Domain</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#results">Results</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-link-col">
+          <h4>Archive</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#documents">Document Archive</a></li>
+            <li><a href="#presentations">Slide Decks</a></li>
+            <li><a href="#about">Research Team</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-link-col">
+          <h4>Institution</h4>
+          <p style="font-size: 0.88rem; color: rgba(246, 248, 243, 0.7); line-height: 1.6; margin-bottom: 0.75rem;">
+            Faculty of Computing<br>
+            Sri Lanka Institute of Information Technology (SLIIT)<br>
+            Malabe, Sri Lanka.
+          </p>
+          <p style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--color-leaf);">
+            cdap.sliit.lk
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-row">
+        <div>
+          &copy; <span id="current-year">2026</span> CropGuard Research Group (Project R26-IT-101). SLIIT Faculty of
+          Computing. All rights reserved.
+        </div>
+        <div class="back-to-top-clean">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="18 15 12 9 6 15" />
+          </svg>
+          Back to Top
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top-floating" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  </button>
+
+  <!-- Scripts -->
+  <script src="js/navigation.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

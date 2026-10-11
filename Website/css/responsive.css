@@ -1,0 +1,243 @@
+/* ==========================================================================
+   CropGuard Research Portal — Responsive Styles & Adaptations
+   Mobile & Tablet Optimizations matching LexiScan's clean responsive behavior
+   ========================================================================== */
+
+/* Tablet & Smaller Desktop (1024px and below) */
+@media (max-width: 1024px) {
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-visual-col {
+    max-width: 640px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .problem-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .objectives-compact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .domain-evidence-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .arch-stages-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .methodology-clean-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .results-hero-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tables-clean-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .docs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .document-row {
+    grid-template-columns: 42px minmax(0, 1fr) auto 58px;
+    gap: 0.75rem;
+  }
+
+  .presentations-grid-clean {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .team-grid-clean {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-columns-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .milestone-content-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+  :root {
+    --header-height: 68px;
+  }
+
+  .nav-menu,
+  .brand-tag,
+  .header-cta-btn {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .meta-strip-items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .problem-card-points {
+    grid-template-columns: 1fr;
+  }
+
+  .research-concept-banner {
+    padding: 2rem;
+  }
+
+  .supervisors-clean-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-layout-clean {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+/* Mobile Devices (540px and below) */
+@media (max-width: 540px) {
+  .display-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  .hero-main-img {
+    height: 320px;
+  }
+
+  .hero-ai-badge {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .hero-floating-summary {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    padding: 1rem;
+  }
+
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .meta-strip-items {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .objectives-compact-grid,
+  .modules-grid,
+  .methodology-clean-steps,
+  .results-hero-grid,
+  .docs-grid,
+  .presentations-grid-clean,
+  .team-grid-clean {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-search-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .document-row {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 0.5rem 0.75rem;
+    padding: 1rem 0;
+  }
+
+  .document-format,
+  .document-pending {
+    grid-row: 2;
+  }
+
+  .document-format {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .document-pending {
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .search-field-wrapper {
+    max-width: 100%;
+  }
+
+  .milestones-select-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .custom-select {
+    width: 100%;
+  }
+
+  .footer-columns-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Prefers Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hero-main-img,
+  .module-card:hover,
+  .doc-clean-card:hover,
+  .pres-clean-card:hover,
+  .team-member-clean-card:hover,
+  .btn:hover {
+    transform: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
