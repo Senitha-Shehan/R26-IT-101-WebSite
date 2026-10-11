@@ -1,7 +1,7 @@
 /* ==========================================================================
    CropGuard Research Portal — Design System
-   Inspired by LexiScan: High-end Editorial Academic Layout, Modern Typography,
-   Spacious Whitespace, Agricultural AI Theme (Deep Forest, Cream, Botanical Green)
+   High-end Editorial Academic Layout, Modern Typography, Spacious Whitespace,
+   Agricultural AI Theme (Deep Forest, Cream, Botanical Green)
    ========================================================================== */
 
 :root {
@@ -113,7 +113,7 @@ button, input, textarea, select {
 }
 
 /* ==========================================================================
-   Typography System (LexiScan Editorial Style)
+   Typography System
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
@@ -158,7 +158,7 @@ p:last-child {
   margin-bottom: 0;
 }
 
-/* Eyebrow Label (like LexiScan's "01 / The Problem" / tags) */
+/* Eyebrow Label */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -260,7 +260,7 @@ p:last-child {
   margin-right: auto;
 }
 
-/* Buttons (LexiScan Pill Style) */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -323,7 +323,7 @@ p:last-child {
 }
 
 /* ==========================================================================
-   Header & Sticky Navigation (Like LexiScan)
+   Header & Sticky Navigation
    ========================================================================== */
 
 .site-header {
@@ -450,7 +450,7 @@ p:last-child {
   font-weight: 600;
 }
 
-/* LexiScan's active indicator dot */
+/* Active indicator dot */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -531,7 +531,7 @@ p:last-child {
 }
 
 /* ==========================================================================
-   Hero Section (LexiScan Inspired Layout)
+   Hero Section
    ========================================================================== */
 
 .hero-section {
@@ -542,7 +542,7 @@ p:last-child {
   overflow: hidden;
 }
 
-/* Subtle background grid pattern like LexiScan */
+/* Subtle background grid pattern */
 .hero-grid-bg {
   position: absolute;
   inset: 0;
@@ -609,7 +609,7 @@ p:last-child {
   transform: scale(1.02);
 }
 
-/* Floating AI Central Emblem (LexiScan style) */
+/* Floating AI Central Emblem */
 .hero-ai-badge {
   position: absolute;
   top: 1.5rem;
@@ -691,7 +691,7 @@ p:last-child {
 }
 
 /* ==========================================================================
-   Project Metadata Strip (LexiScan Bottom Hero Row)
+   Project Metadata Strip
    ========================================================================== */
 
 .meta-strip {
@@ -744,7 +744,7 @@ p:last-child {
    Concise, visually clean, non-repetitive layout
    ========================================================================== */
 
-/* 1. Problem Presentation (Two-Column Editorial like LexiScan) */
+/* 1. Problem Presentation */
 .problem-grid {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
@@ -918,7 +918,7 @@ p:last-child {
   line-height: 1.5;
 }
 
-/* 3. The Four Research Modules (Like LexiScan's Speech, Handwriting, Behavior, Attention) */
+/* 3. The Four Research Modules */
 .modules-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2123,7 +2123,7 @@ body {
 }
 
 /* ==========================================================================
-   Contact Us Section (LexiScan Minimal Layout)
+   Contact Us Section
    ========================================================================== */
 
 .contact-layout-clean {
@@ -2383,7 +2383,7 @@ body {
 }
 
 /* ==========================================================================
-   Footer (4 Columns, LexiScan Minimalist Layout)
+   Footer (4 Columns)
    ========================================================================== */
 
 .site-footer-clean {
@@ -2493,7 +2493,7 @@ body {
 }
 
 /* ==========================================================================
-   Smooth & Professional Animation System (LexiScan Inspired)
+   Smooth & Professional Animation System
    Pure CSS3 transitions & keyframes, zero heavy libraries, accessible
    ========================================================================== */
 

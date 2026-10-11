@@ -266,7 +266,7 @@
   }
 
   /* ------------------------------------------------------------------------
-     4. Smooth Scroll Reveal (LexiScan Inspired)
+     4. Smooth Scroll Reveal
      ------------------------------------------------------------------------ */
   function initScrollReveals() {
     const revealElements = document.querySelectorAll('.reveal');

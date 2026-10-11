@@ -10,10 +10,10 @@
 
 ## 1. Overview
 
-This repository contains the complete, responsive academic research website for **CropGuard**, inspired by the modern, high-end editorial aesthetic of the reference site while preserving an original agricultural AI identity (deep forest green, soft cream, botanical green accents, and subtle rice-field imagery).
+This repository contains the complete, responsive academic research website for **CropGuard**, with an original agricultural AI identity (deep forest green, soft cream, botanical green accents, and subtle rice-field imagery).
 
 Key Highlights:
-- **LexiScan-Inspired Visual Architecture:** Minimalist sticky navigation bar with active section indicator dot, large editorial hero section with floating AI badges, generous whitespace, modern sans-serif typography (Outfit & Inter), and subtle interactive card states.
+- **Visual Architecture:** Minimalist sticky navigation bar with active section indicator dot, large editorial hero section with floating AI badges, generous whitespace, modern sans-serif typography (Outfit & Inter), and subtle interactive card states.
 - **Streamlined 7 Core Navigation Destinations:**
   1. `Home` (`#home`) — High-impact hero, floating edge metrics, institutional metadata bar
   2. `Domain` (`#domain`) — Simplified, concise research presentation:
